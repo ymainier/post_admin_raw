@@ -1,9 +1,16 @@
 PostAdmin::Application.routes.draw do
+  devise_for :users, :skip => :registrations
+
   resources :posts, :only => [:index, :show]
 
   namespace "admin" do
     resources :posts
   end
+
+  namespace :user do
+      root :to => "admin/posts#index"
+  end
+  root :to => "posts#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

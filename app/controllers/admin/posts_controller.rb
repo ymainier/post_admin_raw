@@ -1,5 +1,8 @@
 module Admin
 class PostsController < ApplicationController
+  layout 'admin'
+  before_filter :authenticate_user!
+
   # GET /posts
   # GET /posts.xml
   def index
